@@ -33,7 +33,7 @@ public class GarantiasController {
         List<GarantiasDTO> listaDTO = modelMapper.map(lista , List.class);
         return listaDTO;
     }
-
+    //actualizargarantia
     @PutMapping("/garantiaModicar")
     public GarantiasDTO modificarGarantia(@RequestBody GarantiasDTO garantiaDTO) {
         ModelMapper modelMapper = new ModelMapper();
@@ -41,7 +41,7 @@ public class GarantiasController {
         garantia = garantiaServicioImplement.modificarGarantia(garantia);
         return modelMapper.map(garantia, GarantiasDTO.class);
     }
-
+//eliminargarantia
     @DeleteMapping("/garantiaDelete")
     public void eliminarGarantia(@RequestBody GarantiasDTO garantiaDTO) {
         ModelMapper modelMapper = new ModelMapper();
