@@ -1,15 +1,13 @@
 package com.upc.tp_moneycontrol.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,11 +15,15 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-
-public class Rol {
+public class Bancario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRol;
-    private String nombreRol;
+    private Long idBancario;
+    private String nombre;
+    private LocalDate fechaIngreso;
+    private String direccion;
+    private String telefono;
+    @Column(unique = true)
+    private String email;
 
 }

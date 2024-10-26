@@ -21,14 +21,14 @@ public class UsuarioController {
     @Autowired
     private UsuarioServiceImplement usuarioServiceImplement;
 
-    @PostMapping("/UsuarioInsertar")
+    @PostMapping("/usuario")
     public UsuarioDTO insertar(@RequestBody UsuarioDTO usuarioDTO){
         ModelMapper modelMapper= new ModelMapper();
         Usuario usuario= modelMapper.map(usuarioDTO, Usuario.class);
         usuario= usuarioServiceImplement.savedUsuario(usuario);
         return modelMapper.map(usuario, UsuarioDTO.class);
     }
-    @GetMapping("/UsuarioListar")
+    @GetMapping("/usuarios")
     public List<UsuarioDTO> list(){
         return usuarioServiceImplement.list().stream().map(y -> {
             ModelMapper modelMapper= new ModelMapper();
@@ -36,7 +36,7 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    @PutMapping("/UsuarioModificar")
+    @PutMapping("/usuario")
     public UsuarioDTO modificarUsuraio(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Usuario usuario = modelMapper.map(usuarioDTO, Usuario.class);
@@ -44,7 +44,7 @@ public class UsuarioController {
         return modelMapper.map(usuario, UsuarioDTO.class);
     }
 
-    @DeleteMapping("/UsuraioDelete")
+    @DeleteMapping("/usuario")
     public void eliminarUsuraio(@RequestBody UsuarioDTO usuarioDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Usuario usuario = modelMapper.map(usuarioDTO, Usuario.class);

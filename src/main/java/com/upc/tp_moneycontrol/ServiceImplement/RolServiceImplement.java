@@ -41,4 +41,13 @@ public class RolServiceImplement implements RolService {
     public List<Rol> listarrol() {
         return rolRepository.findAll();
     }
+
+    @Override
+    public Rol buscarTipoRolPorId(long id) {
+
+        if(rolRepository.findById(id).isPresent()){
+            return rolRepository.findById(id).get();
+        }
+        return null;
+    }
 }
