@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 
 
 @RestController
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api")
 public class RolController {
 
