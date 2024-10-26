@@ -10,6 +10,7 @@ public interface RolService {
     public Rol modificarrol(Rol usuario);
     public List<Rol> listarrol();
 
+    public Rol buscarTipoRolPorId(long id);
 
 
 }

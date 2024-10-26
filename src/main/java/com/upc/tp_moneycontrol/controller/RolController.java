@@ -7,45 +7,44 @@ import com.upc.tp_moneycontrol.dto.UsuarioDTO;
 import com.upc.tp_moneycontrol.entities.Rol;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://3.144.144.160/"})
 
 @RestController
-@RequestMapping("/api/Rol")
+@RequestMapping("/api")
 public class RolController {
+
     @Autowired
     private RolServiceImplement rolServiceImplement;
-    @PostMapping("/rolInsertar")
+   /* @PostMapping("/rolInsertar")
     public RolDTO insertarRol(@RequestBody RolDTO rolDTO) {
         ModelMapper modelMapper = new ModelMapper();
             Rol rol = modelMapper.map(rolDTO, Rol.class);
         rol = rolServiceImplement.insertarrol(rol);
         return modelMapper.map(rol, RolDTO.class);
     }
-
-    @GetMapping("/rolListar")
-    public List<RolDTO> listarRol() {
-        List<Rol> lista = rolServiceImplement.listarrol();
+*/
+    @GetMapping("/tiporoles")
+    public List<RolDTO> listaTiposRol() {
+        List<Rol> tipos = rolServiceImplement.listarrol();
         ModelMapper modelMapper = new ModelMapper();
-        List<RolDTO> listaDTO = modelMapper.map(lista , List.class);
-        return listaDTO;
+        return tipos.stream()
+                .map(tipo -> modelMapper.map(tipo, RolDTO.class))
+                .collect(Collectors.toList());
     }
 
-    @PutMapping("/rolModificar")
-    public RolDTO modificarRol(@RequestBody RolDTO rolDTO) {
-        ModelMapper modelMapper = new ModelMapper();
-        Rol rol = modelMapper.map(rolDTO, Rol.class);
-        rol = rolServiceImplement.modificarrol(rol);
-        return modelMapper.map(rol, RolDTO.class);
-    }
 
-    @DeleteMapping("/rolDelete")
-    public void eliminarRol(@RequestBody RolDTO rolDTO) {
+    @PostMapping("/tiporol")//add
+    public ResponseEntity<RolDTO> adicionaTipo(@RequestBody RolDTO rolDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Rol rol = modelMapper.map(rolDTO, Rol.class);
-        rolServiceImplement.eliminarrol(rol.getIdRol());
+        rol = rolServiceImplement.insertarrol(rol);
+        rolDTO = modelMapper.map(rol, RolDTO.class);
+        return ResponseEntity.ok(rolDTO);
     }
+
 }

@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://3.144.144.160/"})
 
 @RestController
-@RequestMapping("/api/Transacciones")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/api")
 public class TransaccionesController {
     @Autowired
     private TransaccionesServiceImplement transaccionesServiceImplement;

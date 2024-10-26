@@ -13,12 +13,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioDTO {
-    private Long idUsuario;
-    private String contrasena;
-    private String nombre;
-    private String apellido;
-    private String direccion;
-    private String telefono;
-    private String email;
+    private Long      idUsuario   ;
+    private String    contrasena   ;
+    private String    nombre      ;
+    private String    apellido   ;
+    private String     direccion    ;
+    private String    telefono     ;
+    private String    email       ;
+
     private Rol rol;
 }
